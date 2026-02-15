@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+
+    <div class="bg-white p-10 rounded-2xl shadow-xl flex flex-col gap-6 w-full max-w-sm mx-4">
+        
+        <!-- Watch Video Button -->
+        <button onclick="handleAction('video')" class="group relative w-full flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span>Watch Video</span>
+        </button>
+
+        <!-- Take Survey Button -->
+        <button onclick="handleAction('survey')" class="group relative w-full flex items-center justify-center gap-3 bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>
+            <span>Take a Survey</span>
+        </button>
+
+    </div>
+
+    <!-- Hidden Message Container for Demo Purposes -->
+    <div id="message-box" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-full opacity-0 transition-opacity duration-300 pointer-events-none shadow-lg">
+        <span id="message-text"></span>
+    </div>
+
+    <script>
+        function handleAction(type) {
+            const messageBox = document.getElementById('message-box');
+            const messageText = document.getElementById('message-text');
+            
+            if (type === 'video') {
+                // In a real app, you would redirect: window.location.href = '/video-url';
+                messageText.innerText = "Opening Video Player...";
+            } else if (type === 'survey') {
+                // In a real app, you would redirect: window.location.href = '/survey-url';
+                messageText.innerText = "Loading Survey Form...";
+            }
+
+            // Show toast message
+            messageBox.classList.remove('opacity-0');
+            setTimeout(() => {
+                messageBox.classList.add('opacity-0');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
